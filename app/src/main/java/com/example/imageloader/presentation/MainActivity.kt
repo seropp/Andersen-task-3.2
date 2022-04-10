@@ -1,6 +1,9 @@
 package com.example.imageloader.presentation
 
 import android.os.Bundle
+import android.text.AlteredCharSequence.make
+import android.text.BoringLayout.make
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.example.imageloader.R
@@ -9,6 +12,7 @@ import com.example.imageloader.databinding.ActivityMainBinding
 import com.example.imageloader.di.App
 import com.example.imageloader.presentation.mvvm.MainViewModel
 import com.example.imageloader.presentation.mvvm.MainViewModelFactory
+import com.google.android.material.snackbar.Snackbar.make
 
 
 class MainActivity : AppCompatActivity() {
@@ -34,6 +38,7 @@ class MainActivity : AppCompatActivity() {
             if ( it == null) {
                 binding.image.setImageDrawable(null)
                 binding.image.setBackgroundResource(R.drawable.whoops)
+                Toast.makeText(this, "Something went wrong.\nTry Again", Toast.LENGTH_SHORT).show()
             }
             else binding.image.setImageBitmap(it)
         })
